@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.OleDb;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Drawing;
 
 namespace pryVidelaSP4Graficos
 {
@@ -16,14 +17,14 @@ namespace pryVidelaSP4Graficos
         public string mensaje = "";
         public void ConectarBD(System.Windows.Forms. ToolStripLabel lblmensaje)
         {
-
             try
             {
-                coneccionBaseDatos = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=..\\..\\BaseDatos\\control_transporte.accdb");
-                coneccionBaseDatos.Open();
-
-                lblmensaje.Text = "Conectado a la Base de Datos";
-                lblmensaje.BackColor = System.Drawing.Color.Green;
+                conexionBaseDatos = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\control_transporte.accdb");
+                conexionBaseDatos.Open();
+                mensaje = "Conexion Exitosa a la Base de Datos";
+                lblmensaje.Text = mensaje;
+                lblmensaje.BackColor = Color.LightGreen;
+                
 
             }
             catch (Exception error)
@@ -34,7 +35,7 @@ namespace pryVidelaSP4Graficos
         }
         public void Graficos()
         {
-            coneccionBaseDatos.Open();
+            
 
         }
     }
