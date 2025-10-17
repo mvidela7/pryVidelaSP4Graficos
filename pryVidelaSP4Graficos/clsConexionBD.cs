@@ -12,7 +12,7 @@ namespace pryVidelaSP4Graficos
     internal class clsConexionBD
     {
         
-        OleDbConnection coneccionBaseDatos;
+        OleDbConnection conexionBaseDatos;
         public string mensaje = "";
         public void ConectarBD(System.Windows.Forms. ToolStripLabel lblmensaje)
         {
