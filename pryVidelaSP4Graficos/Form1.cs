@@ -27,7 +27,8 @@ namespace pryVidelaSP4Graficos
         {
             clsConexionBD conexion = new clsConexionBD();
             conexion.ConectarBD(lblConexion);
-            
+            conexion.fillChart(chartGrafico);
+
         }
 
     }
