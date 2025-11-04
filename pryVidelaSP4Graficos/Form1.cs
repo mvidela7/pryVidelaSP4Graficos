@@ -32,26 +32,28 @@ namespace pryVidelaSP4Graficos
 
         private void btnCamion_Click(object sender, EventArgs e)
         {
-        
+            chartGrafico.Series.Clear();
             clsConexionBD clsConexionBD = new clsConexionBD();
             clsConexionBD.fillChartKM(chartGrafico, cboTipoGrafico.SelectedIndex);
         }
 
         private void btnGastos_Click(object sender, EventArgs e)
         {
-
+            chartGrafico.Series.Clear();
             clsConexionBD clsConexionBD = new clsConexionBD();
             clsConexionBD.GastosPorCamion(chartGrafico, cboTipoGrafico.SelectedIndex);
         }
 
         private void btnKgCamion_Click(object sender, EventArgs e)
         {
+            chartGrafico.Series.Clear();
             clsConexionBD clsConexionBD = new clsConexionBD();
-            clsConexionBD.GastosPorCamion(chartGrafico, cboTipoGrafico.SelectedIndex);
+            clsConexionBD.KgPorCamion(chartGrafico, cboTipoGrafico.SelectedIndex);
         }
 
         private void btnGastosViaticos_Click(object sender, EventArgs e)
         {
+            chartGrafico.Series.Clear();
             clsConexionBD clsConexionBD = new clsConexionBD();
             clsConexionBD.GastosViaticos(chartGrafico, cboTipoGrafico.SelectedIndex);
         }

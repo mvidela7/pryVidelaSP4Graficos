@@ -19,7 +19,7 @@ namespace pryVidelaSP4Graficos
         OleDbDataReader lectorDatos;
         public string mensaje = "";
         
-        public void ConectarBD(ToolStripLabel lblmensaje)
+        public void ConectarBD(System.Windows.Forms.ToolStripStatusLabel lblmensaje)
         {
             try
             {
@@ -36,29 +36,30 @@ namespace pryVidelaSP4Graficos
                 lblmensaje.BackColor = System.Drawing.Color.Red;
             }
         }
-        public void fillChartKM(Chart grafico, Int32 indice)
+        public void fillChartKM(Chart chartGrafico, Int32 indice)
         {
             try
             {
-                grafico.Invalidate();
-                grafico.Series.Add("Camiones");
-                CambioGrafico(indice, grafico);
-                grafico.ChartAreas[0].AxisX.Title = "Camiones";
-                grafico.ChartAreas[0].AxisY.Title = "Kilometros";
-                grafico.ChartAreas[0].AxisY.Maximum = 6000;
-                grafico.ChartAreas[0].AxisY.Interval = 500;
+                chartGrafico.Invalidate();
+                chartGrafico.Series.Add("Camiones");
+                CambioGrafico(indice, chartGrafico);
+                chartGrafico.ChartAreas[0].AxisX.Title = "Camiones";
+                chartGrafico.ChartAreas[0].AxisY.Title = "Kilometros";
+                chartGrafico.ChartAreas[0].AxisY.Maximum = 6000;
+                chartGrafico.ChartAreas[0].AxisY.Interval = 500;
                 conexionBaseDatos = new OleDbConnection(CadenaConexion);
                 conexionBaseDatos.Open();
                 comandoBaseDatos = new OleDbCommand();
                 comandoBaseDatos.Connection = conexionBaseDatos;
+                comandoBaseDatos.CommandText = "SELECT Camión, Kilómetros FROM TablaCamiones";
                 lectorDatos = comandoBaseDatos.ExecuteReader();
                 
                 while (lectorDatos.Read())
                 {
                     string nombreCamion = lectorDatos[0].ToString();
                     Int32 kilometros = Convert.ToInt32(lectorDatos[1]);
-                    int index = grafico.Series[0].Points.AddY(kilometros);
-                    grafico.Series[0].Points[index].AxisLabel = nombreCamion;
+                    int index = chartGrafico.Series[0].Points.AddY(kilometros);
+                    chartGrafico.Series[0].Points[index].AxisLabel = nombreCamion;
 
 
                 }
@@ -69,17 +70,17 @@ namespace pryVidelaSP4Graficos
                 Console.WriteLine("Error al llenar el gráfico: " + error.Message);
             }
         }
-        public void GastosPorCamion(Chart grafico, Int32 indice)
+        public void GastosPorCamion(Chart chartGrafico, Int32 indice)
         {
             try
             {
-                grafico.Invalidate();
-                grafico.Series.Add("Camiones");
-                CambioGrafico(indice, grafico);
-                grafico.ChartAreas[0].AxisX.Title = "Camiones";
-                grafico.ChartAreas[0].AxisY.Title = "Litros";
-                grafico.ChartAreas[0].AxisY.Maximum = 500;
-                grafico.ChartAreas[0].AxisY.Interval = 50;
+                chartGrafico.Invalidate();
+                chartGrafico.Series.Add("Camiones");
+                CambioGrafico(indice, chartGrafico);
+                chartGrafico.ChartAreas[0].AxisX.Title = "Camiones";
+                chartGrafico.ChartAreas[0].AxisY.Title = "Litros";
+                chartGrafico.ChartAreas[0].AxisY.Maximum = 500;
+                chartGrafico.ChartAreas[0].AxisY.Interval = 50;
                 conexionBaseDatos = new OleDbConnection(CadenaConexion);
                 conexionBaseDatos.Open();
                 comandoBaseDatos = new OleDbCommand();
@@ -91,8 +92,8 @@ namespace pryVidelaSP4Graficos
                 {
                     string nombreCamion = lectorDatos[0].ToString();
                     Int32 litros = Convert.ToInt32(lectorDatos[1]);
-                    int index = grafico.Series[0].Points.AddY(litros);
-                    grafico.Series[0].Points[index].AxisLabel = nombreCamion;
+                    int index = chartGrafico.Series[0].Points.AddY(litros);
+                    chartGrafico.Series[0].Points[index].AxisLabel = nombreCamion;
 
                 }
 
@@ -103,17 +104,17 @@ namespace pryVidelaSP4Graficos
             }
 
         }
-        public void KgPorCamion(Chart grafico, Int32 indice)
+        public void KgPorCamion(Chart chartGrafico, Int32 indice)
         {
             try
             {
-                grafico.Invalidate();
-                grafico.Series.Add("Camiones");
-                CambioGrafico(indice, grafico);
-                grafico.ChartAreas[0].AxisX.Title = "Camiones";
-                grafico.ChartAreas[0].AxisY.Title = "Kilogramos";
-                grafico.ChartAreas[0].AxisY.Maximum = 80000;
-                grafico.ChartAreas[0].AxisY.Interval = 5000;
+                chartGrafico.Invalidate();
+                chartGrafico.Series.Add("Camiones");
+                CambioGrafico(indice, chartGrafico);
+                chartGrafico.ChartAreas[0].AxisX.Title = "Camiones";
+                chartGrafico.ChartAreas[0].AxisY.Title = "Kilogramos";
+                chartGrafico.ChartAreas[0].AxisY.Maximum = 80000;
+                chartGrafico.ChartAreas[0].AxisY.Interval = 5000;
                 conexionBaseDatos = new OleDbConnection(CadenaConexion);
                 conexionBaseDatos.Open();
                 comandoBaseDatos = new OleDbCommand();
@@ -124,9 +125,9 @@ namespace pryVidelaSP4Graficos
                 while (lectorDatos.Read())
                 {
                     string nombreCamion = lectorDatos[0].ToString();
-                    Int32 litros = Convert.ToInt32(lectorDatos[1]);
-                    int index = grafico.Series[0].Points.AddY(litros);
-                    grafico.Series[0].Points[index].AxisLabel = nombreCamion;
+                    Int32 kg = Convert.ToInt32(lectorDatos[1]);
+                    int index = chartGrafico.Series[0].Points.AddY(kg);
+                    chartGrafico.Series[0].Points[index].AxisLabel = nombreCamion;
 
                 }
 
@@ -138,17 +139,17 @@ namespace pryVidelaSP4Graficos
 
 
         }
-        public void GastosViaticos(Chart grafico, Int32 indice)
+        public void GastosViaticos(Chart chartGrafico, Int32 indice)
         {
             try
             {
-                grafico.Invalidate();
-                grafico.Series.Add("Camiones");
-                CambioGrafico(indice, grafico);
-                grafico.ChartAreas[0].AxisX.Title = "Camiones";
-                grafico.ChartAreas[0].AxisY.Title = "Viaticos";
-                grafico.ChartAreas[0].AxisY.Maximum = 600;
-                grafico.ChartAreas[0].AxisY.Interval = 100;
+                chartGrafico.Invalidate();
+                chartGrafico.Series.Add("Camiones");
+                CambioGrafico(indice, chartGrafico);
+                chartGrafico.ChartAreas[0].AxisX.Title = "Camiones";
+                chartGrafico.ChartAreas[0].AxisY.Title = "Viaticos";
+                chartGrafico.ChartAreas[0].AxisY.Maximum = 600;
+                chartGrafico.ChartAreas[0].AxisY.Interval = 100;
                 conexionBaseDatos = new OleDbConnection(CadenaConexion);
                 conexionBaseDatos.Open();
                 comandoBaseDatos = new OleDbCommand();
@@ -160,8 +161,8 @@ namespace pryVidelaSP4Graficos
                 {
                     string nombreCamion = lectorDatos[0].ToString();
                     Int32 viatico = Convert.ToInt32(lectorDatos[1]);
-                    int index = grafico.Series[0].Points.AddY(viatico);
-                    grafico.Series[0].Points[index].AxisLabel = nombreCamion;
+                    int index = chartGrafico.Series[0].Points.AddY(viatico);
+                    chartGrafico.Series[0].Points[index].AxisLabel = nombreCamion;
 
                 }
 
@@ -173,21 +174,21 @@ namespace pryVidelaSP4Graficos
 
 
         }
-        private void CambioGrafico(Int32 index, Chart grafico)
+        private void CambioGrafico(Int32 index, Chart chartGrafico)
         {
             switch (index)
             {
                 case 0:
-                    grafico.Series[0].ChartType = SeriesChartType.Column;
+                    chartGrafico.Series[0].ChartType = SeriesChartType.Column;
                     break;
                 case 1:
-                    grafico.Series[0].ChartType = SeriesChartType.Line;
+                    chartGrafico.Series[0].ChartType = SeriesChartType.Line;
                     break;
                 case 2:
-                    grafico.Series[0].ChartType = SeriesChartType.Bar;
+                    chartGrafico.Series[0].ChartType = SeriesChartType.Bar;
                     break;
                 case 3:
-                    grafico.Series[0].ChartType = SeriesChartType.Bubble;
+                    chartGrafico.Series[0].ChartType = SeriesChartType.Bubble;
                     break;
             }
         }

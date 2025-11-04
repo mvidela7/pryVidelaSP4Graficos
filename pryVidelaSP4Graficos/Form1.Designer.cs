@@ -29,12 +29,9 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
             this.statusStripPrincipal = new System.Windows.Forms.StatusStrip();
             this.lblConexion = new System.Windows.Forms.ToolStripStatusLabel();
-            this.chartGrafico = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCamion = new System.Windows.Forms.Button();
             this.btnGastosViaticos = new System.Windows.Forms.Button();
@@ -42,9 +39,10 @@
             this.btnKgCamion = new System.Windows.Forms.Button();
             this.lblTipo = new System.Windows.Forms.Label();
             this.cboTipoGrafico = new System.Windows.Forms.ComboBox();
+            this.chartGrafico = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.statusStripPrincipal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartGrafico)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartGrafico)).BeginInit();
             this.SuspendLayout();
             // 
             // statusStripPrincipal
@@ -63,22 +61,6 @@
             this.lblConexion.Size = new System.Drawing.Size(118, 17);
             this.lblConexion.Text = "toolStripStatusLabel1";
             this.lblConexion.Click += new System.EventHandler(this.toolStripStatusLabel1_Click);
-            // 
-            // chartGrafico
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.chartGrafico.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartGrafico.Legends.Add(legend1);
-            this.chartGrafico.Location = new System.Drawing.Point(260, 116);
-            this.chartGrafico.Name = "chartGrafico";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartGrafico.Series.Add(series1);
-            this.chartGrafico.Size = new System.Drawing.Size(501, 254);
-            this.chartGrafico.TabIndex = 0;
-            this.chartGrafico.Text = "chart1";
             // 
             // panel1
             // 
@@ -163,16 +145,28 @@
             this.cboTipoGrafico.Size = new System.Drawing.Size(169, 21);
             this.cboTipoGrafico.TabIndex = 11;
             // 
+            // chartGrafico
+            // 
+            chartArea1.AxisX.IsLabelAutoFit = false;
+            chartArea1.AxisX.ScaleView.Size = 5D;
+            chartArea1.AxisX.Title = "Camiones";
+            chartArea1.Name = "ChartArea1";
+            this.chartGrafico.ChartAreas.Add(chartArea1);
+            this.chartGrafico.Location = new System.Drawing.Point(280, 84);
+            this.chartGrafico.Name = "chartGrafico";
+            this.chartGrafico.Size = new System.Drawing.Size(508, 317);
+            this.chartGrafico.TabIndex = 13;
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(822, 477);
+            this.Controls.Add(this.chartGrafico);
             this.Controls.Add(this.lblTipo);
             this.Controls.Add(this.cboTipoGrafico);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.chartGrafico);
             this.Controls.Add(this.statusStripPrincipal);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmPrincipal";
@@ -181,8 +175,8 @@
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
             this.statusStripPrincipal.ResumeLayout(false);
             this.statusStripPrincipal.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartGrafico)).EndInit();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chartGrafico)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -191,7 +185,6 @@
         #endregion
         private System.Windows.Forms.StatusStrip statusStripPrincipal;
         private System.Windows.Forms.ToolStripStatusLabel lblConexion;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartGrafico;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnCamion;
         private System.Windows.Forms.Button btnGastosViaticos;
@@ -199,6 +192,7 @@
         private System.Windows.Forms.Button btnKgCamion;
         private System.Windows.Forms.Label lblTipo;
         private System.Windows.Forms.ComboBox cboTipoGrafico;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartGrafico;
     }
 }
 
